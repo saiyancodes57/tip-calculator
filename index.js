@@ -20,7 +20,7 @@ ui.inputs.forEach((input) =>
     }
     if (input.id == "custom") {
       state.tip = parseFloat(this.value);
-      ui.buttons.forEach((btn) => btn.classList.remove("active"));
+      resetGridButtons();
     }
     if (input.id == "people") {
       state.people = parseInt(this.value, 10);
@@ -34,7 +34,7 @@ ui.inputs.forEach((input) =>
 
 ui.buttons.forEach((btn) =>
   btn.addEventListener("click", function () {
-    ui.buttons.forEach((button) => button.classList.remove("active"));
+    resetGridButtons();
     this.classList.toggle("active");
     state.tip = parseFloat(this.dataset.value);
     calculate();
@@ -68,8 +68,7 @@ function reset() {
   state.people = 0;
   ui.inputs.forEach((input) => (input.value = ""));
 
-  // Reset the Tip Buttons (remove the green 'active' highlight)
-  ui.buttons.forEach((button) => button.classList.remove("active"));
+  resetGridButtons();
 
   // Clear the Error message
   ui.errorMsg.textContent = "";
@@ -77,6 +76,8 @@ function reset() {
 
   // Reset the display figures back to zero
   calculate();
+}
 
-  calculate();
+function resetGridButtons() {
+  ui.buttons.forEach((button) => button.classList.remove("active"));
 }
