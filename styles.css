@@ -263,6 +263,14 @@ input::placeholder {
 }
 
 @media (min-width: 62.5rem) {
+  body {
+    align-items: center;
+  }
+
+  .overview-top {
+    gap: 6rem;
+  }
+
   main {
     display: flex;
     gap: 3rem;
